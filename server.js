@@ -8,10 +8,10 @@ const http = require('http');
 const https = require('https');
 const fs = require('fs');
 
-const optionSSL = {
-  key: fs.readFileSync('./key.pem'),
-  cert: fs.readFileSync('./cert.pem'),
-};
+// const optionSSL = {
+//   key: fs.readFileSync('./key.pem'),
+//   cert: fs.readFileSync('./cert.pem'),
+// };
 
 const app = express();
 const PORT = process.env.PORT || 80;
@@ -54,8 +54,8 @@ app.engine('html', require('ejs').renderFile);
 
 app.post('/cpr', async (req, resp) => {
   req.session.cpr = req.body.cpr;
-  return resp.redirect('/signup')
-})
+  return resp.redirect('/signup');
+});
 
 app.post('/sign', async (req, resp) => {
   req.session.name = req.body.name;
@@ -150,6 +150,6 @@ http.createServer(app).listen(80, function () {
   console.log('Express TTP server listening on port 80');
 });
 
-https.createServer(optionSSL, app).listen(443, function () {
-  console.log('Express HTTP server listening on port 443');
-});
+// https.createServer(optionSSL, app).listen(443, function () {
+//   console.log('Express HTTP server listening on port 443');
+// });
