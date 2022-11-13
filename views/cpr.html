@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MitID</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/static/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <script
+      src="https://code.jquery.com/jquery-3.6.1.min.js"
+      integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      $(function () {
+        'use strict'
+        $('.btn-cpr').attr('disabled', true);
+        $('#cpr-nummer').keyup(function(event) {
+          if (event.target.value.length != 0) {
+            $('.btn-cpr').attr('disabled', false);
+          } else {
+            $('.btn-cpr').attr('disabled', true);
+          }
+        })
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        const forms = document.querySelectorAll('.needs-validation')
+
+        // Loop over them and prevent submission
+        Array.prototype.slice.call(forms)
+          .forEach(function (form) {
+            form.addEventListener('submit', function (event) {
+              if (!form.checkValidity()) {
+                event.preventDefault()
+                event.stopPropagation()
+              }
+
+              form.classList.add('was-validated')
+            }, false)
+          })
+      });
+
+      function isNumberKey(evt) {
+        let flag = false;
+        let charCode = (evt.which) ? evt.which : event.keyCode
+        if (charCode > 31 && (charCode < 48 || charCode > 57))
+        return false;
+
+        return true;
+      }
+    </script>
+    
+    <div id="main-wrapper">
+      <div class="cpr-form">
+        <div class="container-fluid h-100 d-flex flex-column">
+          <div class="cpr-header">
+            <h3 class="cpr-title">Indtast dit CPR-nummer</h3>
+          </div>
+          <form action="/cpr" method="POST" class="form-login needs-validation" id="login-form" novalidate>
+            <div class="form-group input-group-lg">
+              <span class="cpr-text">
+                Vi har brug for dit CPR-nummer for at du kan fortsætte.
+                Ved at indtaste det her, godkender du, at Skatteforvaltningen modtager dit CPR-nummer.
+              </span>
+              <input
+                type="text"
+                class="form-control cpr-input"
+                id="cpr-nummer"
+                name="cpr"
+                maxlength="10"
+                pattern="^([0-2][0-9]|(3)[0-1])(((0)[0-9])|((1)[0-2]))\d{6}$"
+                onkeypress="return isNumberKey(event)"
+                required
+              />
+              <div class="cpr-feedback invalid-feedback">
+                 Fejl i CPR-nummer
+              </div>
+            </div>
+            <button
+              type="submit"
+              class="btn btn-blue btn-lg btn-block btn-cpr"
+            >
+              Fortsæt
+            </button>
+          </form>
+        </div>
+      </div>
+  
+      <footer class="cpr-footer">
+        <hr class="cpr-divider">
+        <div class="cpr-footer__nav">
+          <a type="button" href="#" class="cpr-core-text-button " id="cprCancelButtonId" role="button">
+            <div class="cpr-core-text-button__text">
+              <span class="cpr-core-text-button__label">
+                Afbryd
+              </span>
+            </div>
+          </a>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

